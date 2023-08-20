@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:realm/realm.dart';
 
+/*
+ This executes login, sign-up, and logout. It must be called with the appId and baseUrl.
+ It creates an app which is an instance of the AppServices class as follows:
+ AppServices appServices.
+ then execute the functions as follows:
+ appServices.app.currentUser.
+
+*/
+
 class AppServices with ChangeNotifier {
   String id;
   Uri baseUrl;

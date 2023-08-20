@@ -2,6 +2,12 @@ import 'package:flutter_todo/realm/schemas.dart';
 import 'package:realm/realm.dart';
 import 'package:flutter/material.dart';
 
+/*
+This must be called with an instance of the AppServices class which returns the three things:
+login, signup, logout.
+so it should get currentUser basically?
+*/
+
 class RealmServices with ChangeNotifier {
   static const String queryAllName = "getAllItemsSubscription";
   static const String queryMyItemsName = "getMyItemsSubscription";
@@ -14,7 +20,7 @@ class RealmServices with ChangeNotifier {
   App app;
 
   RealmServices(this.app) {
-    if (app.currentUser != null || currentUser != app.currentUser) {
+    if (app.currentUser != null || currentUser != app.currentUser) { //if somebody is logged-in or somebody else is not logged in?
       currentUser ??= app.currentUser;
       realm = Realm(Configuration.flexibleSync(currentUser!, [Item.schema]));
       showAll = (realm.subscriptions.findByName(queryAllName) != null);
